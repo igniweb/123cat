@@ -13,6 +13,6 @@ As described in http://viget.com/extend/keeping-the-framework-for-your-applicati
 #### Update framework
 
     git checkout framework
-    git pull framework master
+    git pull laravel master
     git checkout master
     git merge framework
