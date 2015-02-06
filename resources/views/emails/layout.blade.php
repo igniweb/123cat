@@ -6,7 +6,7 @@
     <style type="text/css">
         <?php
         ob_start();
-        include base_path('resources/views/emails/header/_ink.css');
+        include base_path('resources/assets/vendor/ink/css/ink.css');
         include base_path('resources/views/emails/header/_styles.css');
         echo ob_get_clean();
         ?>
