@@ -25,7 +25,22 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//$this->app->bind('Illuminate\Contracts\Auth\Registrar', 'App\Services\Registrar');
+		$this->app->singleton('GuzzleHttp\ClientInterface', function () {
+			return new \GuzzleHttp\Client([
+				'defaults' => [
+					'verify' => false,
+				]
+			]);
+		});
+
+		$this->app->singleton('App\Services\OAuth\ProviderInterface', function ($app) {
+			return new \App\Services\OAuth\Google([
+				'client_id'     => env('OAUTH_CLIENT_ID'),
+				'client_secret' => env('OAUTH_CLIENT_SECRET'),
+				'redirect_uri'  => route('auth_oauth'),
+				'scopes'        => ['profile', 'email'],
+			], $app['GuzzleHttp\ClientInterface']);
+		});
 	}
 
 }
