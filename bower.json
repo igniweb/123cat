@@ -1,6 +1,3 @@
 {
-    "name": "igniweb/123cat",
-    "dependencies": {
-        "ink": "~1.0.5"
-    }
+    "name": "igniweb/123cat"
 }

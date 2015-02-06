@@ -85,7 +85,7 @@ class Handler extends ExceptionHandler {
 		];
 
 		Mail::send('emails.errors.auth', $data, function ($message) {
-			$message->to(env('MAIL_ADMIN'))->subject(trans('app.errors.auth'));
+			$message->to('smuller@tequilarapido.com')->subject(trans('app.errors.auth'));
 		});
 		
 		return redirect()->route('home');

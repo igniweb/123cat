@@ -1,49 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width">
-    <style type="text/css">
-        <?php
-        ob_start();
-        include base_path('resources/assets/vendor/ink/css/ink.css');
-        include base_path('resources/views/emails/header/_styles.css');
-        echo ob_get_clean();
-        ?>
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
-<body>
-    <table class="body">
-        <tr>
-            <td class="center" align="center" valign="top">
-                <center>
-                    @include('emails.header._topbar')
-                    <table class="container">
-                        <tr>
-                            <td>
-                                <table class="row">
-                                    <tr>
-                                        <td class="wrapper last">
-                                            <table class="twelve columns">
-                                                <tr>
-                                                    <td>
-                                                        @yield('main')
-                                                    </td>
-                                                    <td class="expander"></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                                @include('emails.footer._next-cat')
-                                @include('emails.footer._contact')
-                                @include('emails.footer._webring')
-                            </td>
-                        </tr>
+<body class="body" style="margin: 0; padding: 0; font-family: Helvetica,Verdana,Arial,sans-serif; font-size: 11pt; color: #777777; line-height: 1.5em; width: 100%; min-width: 600px;">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#E3E3E3" align="center" style="padding: 0; margin: 0; border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td style="border-collapse: collapse;" width="100%" align="center">
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#ffffff" style="padding: 0; border-collapse: collapse; margin: auto;">
+                        <tbody>
+                            @include('emails.partials._preheader')
+                            @include('emails.partials._header')
+                            @include('emails.partials._content')
+                            {{-- @include('emails.partials._separator') --}}
+                            {{-- @include('emails.partials._2cols') --}}
+                            @include('emails.partials._spacer')
+                            @include('emails.partials._footer')
+                            @include('emails.partials._signature')
+                        </tbody>
                     </table>
-                </center>
-            </td>
-        </tr>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
