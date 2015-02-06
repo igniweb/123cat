@@ -12,7 +12,7 @@
                                         <td width="20" style="border-collapse: collapse;"></td>
                                         <td width="520" align="center" style="border-collapse: collapse; font-family: Helvetica,Verdana,Arial,sans-serif;">                                  
                                             <div style="margin: 0; margin-bottom: 1em;">
-                                                @yield('main')
+                                                @yield('1col')
                                             </div>
                                         </td>
                                         <td width="20" style="border-collapse: collapse;"></td>

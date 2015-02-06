@@ -11,14 +11,13 @@
                 <td style="border-collapse: collapse;" width="100%" align="center">
                     <table border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#ffffff" style="padding: 0; border-collapse: collapse; margin: auto;">
                         <tbody>
-                            @include('emails.partials._preheader')
-                            @include('emails.partials._header')
-                            @include('emails.partials._content')
-                            {{-- @include('emails.partials._separator') --}}
-                            {{-- @include('emails.partials._2cols') --}}
-                            @include('emails.partials._spacer')
-                            @include('emails.partials._footer')
-                            @include('emails.partials._signature')
+                            @include('emails.layouts.partials._preheader')
+                            @include('emails.layouts.partials._header')
+
+                            @include('emails.layouts.partials._1col')
+
+                            @include('emails.layouts.partials._footer')
+                            @include('emails.layouts.partials._signature')
                         </tbody>
                     </table>
                 </td>

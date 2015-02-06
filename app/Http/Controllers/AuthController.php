@@ -41,8 +41,8 @@ class AuthController extends Controller {
 		try
 		{
 // @todo Debug email layout
-//$model = User::where('email', '=', $user->email . 't')->firstOrFail();
-			$model = User::where('email', '=', $user->email)->firstOrFail();
+$model = User::where('email', '=', $user->email . 't')->firstOrFail();
+			//$model = User::where('email', '=', $user->email)->firstOrFail();
 		}
 		catch (ModelNotFoundException $e)
 		{
