@@ -51,7 +51,7 @@ abstract class AbstractProvider implements ProviderInterface {
      * POST request for connected account access token.
      *
      * @param string $code
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return \GuzzleHttp\Message\Response
      */
     abstract protected function requestAccessToken($token);
@@ -60,7 +60,7 @@ abstract class AbstractProvider implements ProviderInterface {
      * Return user array associated with the token.
      *
      * @param string $token
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return array
      */
     abstract protected function userByToken($token);
@@ -69,7 +69,7 @@ abstract class AbstractProvider implements ProviderInterface {
      * Map object to fit \App\User object.
      *
      * @param array $user
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return \App\User
      */
     abstract protected function mapUser(array $user);

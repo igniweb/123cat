@@ -1,4 +1,4 @@
-<?php namespace App\Services\OAuth;
+<?php namespace App\Exceptions;
 
 use Exception;
 

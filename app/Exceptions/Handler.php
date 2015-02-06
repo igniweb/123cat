@@ -1,7 +1,6 @@
 <?php namespace App\Exceptions;
 
-use Exception;
-use App\Services\OAuth\OAuthException;
+use Exception, Mail;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
@@ -45,6 +44,10 @@ class Handler extends ExceptionHandler {
 		{
 			return $this->renderOAuthException($e);
 		}
+		elseif ($e instanceof AuthException)
+		{
+			return $this->notifyAuthException($e);
+		}
 		else
 		{
 			return parent::render($request, $e);
@@ -67,6 +70,25 @@ class Handler extends ExceptionHandler {
 		{
 			return (new SymfonyDisplayer(config('app.debug')))->createResponse($e);
 		}
+	}
+
+	/**
+	 * Notify by email about an AuthException.
+	 *
+	 * @param \App\Services\OAuth\AuthException $e
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	private function notifyAuthException(AuthException $e)
+	{
+		$data = [
+			'content' => $e->getMessage(),
+		];
+
+		Mail::send('emails.errors.auth', $data, function ($message) {
+			$message->to(env('MAIL_ADMIN'))->subject(trans('app.errors.auth'));
+		});
+		
+		return redirect()->route('home');
 	}
 
 }

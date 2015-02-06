@@ -1,7 +1,7 @@
 <?php namespace App\Services\OAuth;
 
+use App\Exceptions\OAuthException;
 use App\User;
-use App\Services\OAuth\OAuthException;
 use GuzzleHttp\Exception\ClientException;
 
 class Google extends AbstractProvider {
@@ -27,7 +27,7 @@ class Google extends AbstractProvider {
      * POST request for connected account access token.
      *
      * @param string $code
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return \GuzzleHttp\Message\Response
      */
     protected function requestAccessToken($code)
@@ -54,7 +54,7 @@ class Google extends AbstractProvider {
      * Return user array associated with the token.
      *
      * @param string $token
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return array
      */
     protected function userByToken($token)
@@ -80,7 +80,7 @@ class Google extends AbstractProvider {
      * Map object to fit \App\User object.
      *
      * @param array $user
-     * @throws \App\Services\OAuth\OAuthException
+     * @throws \App\Exceptions\OAuthException
      * @return \App\User
      */
     protected function mapUser(array $user)
@@ -92,8 +92,8 @@ class Google extends AbstractProvider {
 
         $model = new User;
 
-        $model->email  = $user['emails'][0]['value'];
-        $model->name   = ! empty($user['displayName']) ? $user['displayName'] : null;
+        $model->email = $user['emails'][0]['value'];
+        $model->name = ! empty($user['displayName']) ? $user['displayName'] : null;
         $model->avatar = ! empty($user['image']['url']) ? $user['image']['url'] : null;
 
         return $model;
