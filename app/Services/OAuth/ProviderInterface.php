@@ -13,7 +13,6 @@ interface ProviderInterface {
      * Return access token associated with code.
      *
      * @param string $code
-     * @throws \App\Services\OAuth\Exceptions\InvalidTokenException
      * @return string
      */
     public function accessToken($code);
@@ -22,7 +21,6 @@ interface ProviderInterface {
      * Return authenticated User instance.
      *
      * @param string $token
-     * @throws \App\Services\OAuth\Exceptions\UnknownUserException
      * @return \App\User
      */
     public function user($token);

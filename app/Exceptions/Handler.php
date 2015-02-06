@@ -1,6 +1,7 @@
 <?php namespace App\Exceptions;
 
 use Exception;
+use App\Services\OAuth\OAuthException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
@@ -19,7 +20,7 @@ class Handler extends ExceptionHandler {
 	 *
 	 * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
 	 *
-	 * @param  \Exception  $e
+	 * @param \Exception $e
 	 * @return void
 	 */
 	public function report(Exception $e)
@@ -30,8 +31,8 @@ class Handler extends ExceptionHandler {
 	/**
 	 * Render an exception into an HTTP response.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Exception  $e
+	 * @param \Illuminate\Http\Request $request
+	 * @param \Exception $e
 	 * @return \Illuminate\Http\Response
 	 */
 	public function render($request, Exception $e)
@@ -40,9 +41,31 @@ class Handler extends ExceptionHandler {
 		{
 			return $this->renderHttpException($e);
 		}
+		elseif ($e instanceof OAuthException)
+		{
+			return $this->renderOAuthException($e);
+		}
 		else
 		{
 			return parent::render($request, $e);
+		}
+	}
+
+	/**
+	 * Render the given OAuthException.
+	 *
+	 * @param \App\Services\OAuth\OAuthException $e
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	private function renderOAuthException(OAuthException $e)
+	{
+		if (view()->exists('errors.403'))
+		{
+			return response()->view('errors.403', ['message' => $e->getMessage()], 403);
+		}
+		else
+		{
+			return (new SymfonyDisplayer(config('app.debug')))->createResponse($e);
 		}
 	}
 

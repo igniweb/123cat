@@ -1,8 +1,6 @@
 <?php namespace App\Services\OAuth;
 
 use GuzzleHttp\ClientInterface;
-use App\Services\OAuth\Exceptions\InvalidTokenException;
-use App\Services\OAuth\Exceptions\UnknownUserException;
 
 abstract class AbstractProvider implements ProviderInterface {
     
@@ -53,6 +51,7 @@ abstract class AbstractProvider implements ProviderInterface {
      * POST request for connected account access token.
      *
      * @param string $code
+     * @throws \App\Services\OAuth\OAuthException
      * @return \GuzzleHttp\Message\Response
      */
     abstract protected function requestAccessToken($token);
@@ -61,23 +60,24 @@ abstract class AbstractProvider implements ProviderInterface {
      * Return user array associated with the token.
      *
      * @param string $token
-     * @return array|false
+     * @throws \App\Services\OAuth\OAuthException
+     * @return array
      */
     abstract protected function userByToken($token);
 
     /**
      * Map object to fit \App\User object.
      *
-     * @param array $rawUser
-     * @return \App\User|false
+     * @param array $user
+     * @throws \App\Services\OAuth\OAuthException
+     * @return \App\User
      */
-    abstract protected function mapUser(array $rawUser);
+    abstract protected function mapUser(array $user);
 
     /**
      * Return access token associated with code.
      *
      * @param string $code
-     * @throws \App\Services\OAuth\Exceptions\InvalidTokenException
      * @return string
      */
     public function accessToken($code)
@@ -85,10 +85,6 @@ abstract class AbstractProvider implements ProviderInterface {
         $response = $this->requestAccessToken($code);
 
         $data = $response->json();
-        if (empty($data['access_token']))
-        {
-            throw new InvalidTokenException('Invalid token matching "' . $code . '"');
-        }
 
         return $data['access_token'];
     }
@@ -97,23 +93,13 @@ abstract class AbstractProvider implements ProviderInterface {
      * Return authenticated User instance.
      *
      * @param string $token
-     * @throws \App\Services\OAuth\Exceptions\UnknownUserException
      * @return \App\User
      */
     public function user($token)
     {
-        $rawUser = $this->userByToken($token);
-        if ( ! empty($rawUser))
-        {
-            $user = $this->mapUser($rawUser);
-        }
+        $user = $this->userByToken($token);
 
-        if (empty($user))
-        {
-            throw new UnknownUserException('Unknow user associated with token "' . $token . '"');
-        }
-
-        return $user;
+        return $this->mapUser($user);
     }
 
 }

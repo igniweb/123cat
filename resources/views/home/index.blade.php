@@ -6,5 +6,6 @@
 </head>
 <body>
     <h1>Home / Index</h1>
+    <p><a href="{{ route('auth_signin') }}">Signin</a></p>
 </body>
 </html>

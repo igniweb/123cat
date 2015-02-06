@@ -30,7 +30,7 @@ class AuthController extends Controller {
 		$dbUser = User::where('email', '=', $user->email)->firstOrFail();
 
 		$dbUser->name = $user->name;
-		$dbUser->avatar = str_replace('sz=50', 'sz=50', $user->avatar);
+		$dbUser->avatar = str_replace('sz=50', 'sz=150', $user->avatar);
 		$dbUser->save();
 
 		Session::put('user', $dbUser->toArray());
