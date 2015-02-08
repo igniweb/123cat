@@ -1,5 +1,5 @@
 <tr>
-    <td width="100%" align="center" style="border-collapse: collapse; padding-top: 35px; padding-bottom: 20px;">
+    <td width="100%" align="center" style="border-collapse: collapse; padding-bottom: 20px;">
         <div style="width: 600px; margin: auto;">
             <table border="0" bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
                 <tbody>
