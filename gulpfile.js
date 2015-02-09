@@ -12,5 +12,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.styles([
+        'semantic-ui.css'
+    ], 'public/css/app.css')
+       .version('public/css/app.css');
 });

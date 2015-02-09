@@ -1,4 +1,6 @@
 /node_modules
+/public/build
+/public/css
 /resources/assets/vendor
 /vendor
 .env-*
