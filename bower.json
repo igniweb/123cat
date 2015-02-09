@@ -1,3 +1,6 @@
 {
-    "name": "igniweb/123cat"
+    "name": "igniweb/123cat",
+    "devDependencies": {
+        "semantic-ui": "~1.8.1"
+    }
 }
