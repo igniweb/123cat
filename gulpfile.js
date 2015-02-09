@@ -15,5 +15,9 @@ elixir(function(mix) {
     mix.styles([
         'semantic-ui.css'
     ], 'public/css/app.css')
-       .version('public/css/app.css');
+       .scripts([
+        '../assets/vendor/jquery/dist/jquery.js',
+        'semantic-ui.js'
+    ], 'public/js/app.js')
+       .version(['public/css/app.css', 'public/js/app.js']);
 });

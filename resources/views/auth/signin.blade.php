@@ -8,5 +8,6 @@
 <body>
     <h1>Auth / Signin</h1>
     <p><a href="{{ $authorizationUrl }}">Signin with Google</a></p>
+    <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

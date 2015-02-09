@@ -9,5 +9,6 @@
     <h1>Admin / Dashboard / Index</h1>
     <pre><?php print_r(Session::get('user')); ?></pre>
     <p><a href="{{ route('auth_signout') }}">Signout</a></p>
+    <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

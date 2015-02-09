@@ -8,5 +8,6 @@
 <body>
     <h1>Home / Index</h1>
     <p><a href="{{ route('auth_signin') }}">Signin</a></p>
+    <script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>
