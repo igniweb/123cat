@@ -14,4 +14,9 @@ return [
         'auth_lead' => '- Utilisateur OAuth sans autorisation applicative -',
     ],
 
+    'auth' => [
+        'title'  => '1,2,3 CAT - Backend authentification',
+        'google' => 'Signin with your Google account',
+    ],
+
 ];
