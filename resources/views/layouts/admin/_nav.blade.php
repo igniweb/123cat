@@ -4,7 +4,7 @@
     <a class="ui dropdown item">{{ trans('admin.nav.users') }}
         <i class="dropdown icon"></i>
         <div class="menu">
-            <a href="{{ route('admin') }}" class="item">Admin</a>
+            <div class="item"><a href="{{ route('admin') }}">Admin</a></div>
         </div>
     </a>
     <a href="{{ route('auth_signout') }}" class="item right">
