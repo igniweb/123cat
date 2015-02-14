@@ -15,9 +15,10 @@ class UserTableSeeder extends Seeder {
         User::truncate();
 
         $users = [
-            'zepp.muller@gmail.com'    => 'admin',
-            'igniweb.net@gmail.com'    => 'admin',
-            'contact.123cat@gmail.com' => 'backend',
+            'zepp.muller@gmail.com'     => 'admin',
+            'igniweb.net@gmail.com'     => 'admin',
+            'smuller@tequilarapido.com' => 'admin',
+            'contact.123cat@gmail.com'  => 'backend',
         ];
         foreach ($users as $email => $role)
         {
