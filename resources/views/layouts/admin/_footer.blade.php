@@ -2,6 +2,9 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
             jQuery('.ui.dropdown').dropdown();
+            jQuery('.ui.dimmer').dimmer({
+                on: 'hover'
+            });
         });
     </script>
 </body>

@@ -2,8 +2,8 @@
 
 @section('main')
 <main class="ui page grid">
-    <div class="row">
-        <div class="center aligned starter column">
+    <div class="three column computer row">
+        <div class="center aligned column">
             <h1 class="ui header">Admin / Dashboard / Index</h1>
             <pre class=""><?php print_r(Session::get('user')); ?></pre>
         </div>

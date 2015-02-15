@@ -9,6 +9,10 @@
                 @foreach ($users as $user)
                     <a href="{{ route('admin.user.edit', [$user['id']]) }}" class="item">{{ $user['email'] }}</a>
                 @endforeach
+                <div class="divider"></div>
+                <div class="item">
+                    <a href="{{ route('admin.user.create') }}" class="ui primary button">{{ trans('admin.nav.user.create') }}</a>
+                </div>
             </div>
         </div>
     @endif
@@ -16,9 +20,18 @@
         <div class="ui dropdown item" style="min-width: 150px;">
             {{ $loggedUser['name'] }}
             <div class="menu">
-                <a href="{{ route('admin.user.edit', [$loggedUser['id']]) }}">
-                    <img src="{{ $loggedUser['avatar'] }}" class="ui centered circular image" alt="" style="width: 150px; height: 150px; padding: 20px 20px 10px 20px;"><br>
-                </a>
+                <div class="ui card" style="width: 150px;">
+                    <div class="image dimmable">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <a href="{{ route('admin.user.edit', [$loggedUser['id']]) }}" class="ui inverted button">{{ trans('admin.nav.profile') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{{ $loggedUser['avatar'] }}" alt="{{ $loggedUser['email'] }}">
+                    </div>
+                </div>
             </div>
         </div>
         <a href="{{ route('auth_signout') }}" class="item">
