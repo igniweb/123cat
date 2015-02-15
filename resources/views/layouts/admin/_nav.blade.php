@@ -13,10 +13,14 @@
         </div>
     @endif
     <div class="right menu">
-        <a href="{{ route('admin.user.edit', [$loggedUser['id']]) }}" class="item">
-            <img src="{{ $loggedUser['avatar'] }}" class="ui avatar image" alt="" style="display: inline; width: 18px; height: 18px;">
+        <div class="ui dropdown item" style="min-width: 150px;">
             {{ $loggedUser['name'] }}
-        </a>
+            <div class="menu">
+                <a href="{{ route('admin.user.edit', [$loggedUser['id']]) }}">
+                    <img src="{{ $loggedUser['avatar'] }}" class="ui centered circular image" alt="" style="width: 150px; height: 150px; padding: 20px 20px 10px 20px;"><br>
+                </a>
+            </div>
+        </div>
         <a href="{{ route('auth_signout') }}" class="item">
             <i class="lock icon"></i>
             {{ trans('admin.nav.signout') }}
