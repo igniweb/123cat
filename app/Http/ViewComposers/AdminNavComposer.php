@@ -1,10 +1,28 @@
 <?php namespace App\Http\ViewComposers;
 
 use Session;
-use App\User;
+use App\Repositories\UserRepository;
 use Illuminate\Contracts\View\View;
 
 class AdminNavComposer {
+
+    /**
+     * Users repository.
+     *
+     * @var \App\Repositories\UserRepository
+     */
+    protected $users;
+
+    /**
+     * Class constructor.
+     *
+     * @param \App\Repositories\UserRepository $users.
+     * @return void
+     */
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
+    }
 
     /**
      * Bind data to the view.
@@ -13,11 +31,9 @@ class AdminNavComposer {
      */
     public function compose(View $view)
     {
-        $loggedUser = Session::get('user');
+        $users = $this->users->all();
 
-        $users = User::select('id', 'email')->orderBy('email')->get()->toArray();
-
-        $view->with('loggedUser', $loggedUser)->with('users', $users);
+        $view->with('loggedUser', Session::get('user'))->with('users', $users);
     }
 
 }

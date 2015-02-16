@@ -7,7 +7,7 @@
             <i class="dropdown icon"></i>
             <div class="menu">
                 @foreach ($users as $user)
-                    <a href="{{ route('admin.user.edit', [$user['id']]) }}" class="item">{{ $user['email'] }}</a>
+                    <a href="{{ route('admin.user.edit', [$user['id']]) }}" class="item" title="{{ $user['email'] }}">{{ ! empty($user['name']) ? $user['name'] : $user['email'] }}</a>
                 @endforeach
                 <div class="divider"></div>
                 <div class="item">

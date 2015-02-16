@@ -15,6 +15,11 @@ class ComposerServiceProvider extends ServiceProvider {
         View::composer('layouts.admin._nav', 'App\Http\ViewComposers\AdminNavComposer');
     }
 
+    /**
+    * To extend ServiceProvider.
+    *
+    * @return void
+    */
     public function register()
     {
         //

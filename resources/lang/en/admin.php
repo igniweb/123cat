@@ -6,7 +6,7 @@ return [
         'dashboard' => 'Dashboard',
         'users'     => 'Users',
         'user'      => [
-            'create' => 'Create user',
+            'create' => 'Authorize user',
         ],
         'profile'   => 'Profile',
         'signout'   => 'Signout',

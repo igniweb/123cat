@@ -41,6 +41,8 @@ class AppServiceProvider extends ServiceProvider {
 				'scopes'        => ['profile', 'email'],
 			], $app['GuzzleHttp\ClientInterface']);
 		});
+
+		$this->app->bind('App\Repositories\UserRepository', 'App\Repositories\Eloquent\UserRepository');
 	}
 
 }

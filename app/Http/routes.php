@@ -9,5 +9,5 @@ Route::get('signout', ['middleware' => 'auth', 'as' => 'auth_signout', 'uses' =>
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', ['as' => 'admin', 'uses' => 'DashboardController@index']);
 
-    Route::resource('user', 'UserController');
+    Route::resource('user', 'UserController', ['except' => ['index', 'show']]);
 });
