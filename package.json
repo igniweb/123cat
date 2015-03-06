@@ -1,4 +1,5 @@
 {
+    "private": true,
     "repository": "https://github.com/igniweb/123cat",
     "devDependencies": {
         "gulp": "^3.8.11",
